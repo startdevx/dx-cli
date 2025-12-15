@@ -8,7 +8,7 @@
 
 ## What is DX CLI?
 
-DX CLI removes your organization's friction of internal tools and documentation discovery so your engineers can focus on building, not hunting. 
+DX CLI removes your organization's frictions of internal tools and documentation discovery so your engineers can focus on building, not hunting. 
 
 Discover tools instantly, integrate your own corporate AI solutions, and create custom workflows that make every engineer more efficient.
 
