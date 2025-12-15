@@ -60,5 +60,5 @@ function Start-AssistantJob {
         }
 
         return "Your AI assistant has not been integrated yet by your organization.`nMore info at https://github.com/startdevx/dx-cli/blob/main/docs/integrate-your-ai.md"
-    } -ArgumentList $PromptInput $PromptSystem
+    } -ArgumentList $PromptInput, $PromptSystem
 }
