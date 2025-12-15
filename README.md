@@ -8,7 +8,9 @@
 
 ## What is DX CLI?
 
-DX CLI removes the friction of internal tools and documentation discovery so your engineers can focus on building, not hunting. Discover tools instantly, integrate your own corporate AI solutions, and create custom workflows that make every engineer more efficient. The result? Faster onboarding, smoother collaboration, and a developer experience that actually works.
+DX CLI removes the friction of internal tools and documentation discovery so your engineers can focus on building, not hunting. Discover tools instantly, integrate your own corporate AI solutions, and create custom workflows that make every engineer more efficient.
+
+The result? Faster onboarding, smoother collaboration, and a developer experience that actually works.
 
 ## 💻 Install PowerShell 7.x
 
