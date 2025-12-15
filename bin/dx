@@ -4,6 +4,7 @@ current_location="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Function to run PowerShell script
 run_powershell() {
+    "$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../utilities/UpdateChecker.ps1"
     "$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../StartChat.ps1"
 }
 
