@@ -10,7 +10,7 @@ function New-SystemMessage {
 }
 
 function New-SystemAboutMessage {
-    $version = Get-Content -Path "$PSScriptRoot\..\version"
+    $version = Get-Content -Path "$PSScriptRoot\..\Version"
     $aboutMessage = @"
 About DX CLI
 
