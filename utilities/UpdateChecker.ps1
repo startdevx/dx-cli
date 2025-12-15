@@ -10,7 +10,7 @@ try {
     Get-Command git -ErrorAction Stop | Out-Null
     Invoke-Git -GitArguments @("-C", "$PSScriptRoot\..", "fetch", "origin", "--prune") | Out-Null
     [Version]$remoteVersion = Invoke-Git -GitArguments @("-C", "$PSScriptRoot\..", "show", "origin/main:version")
-    [Version]$currentVersion = Get-Content -Path "$PSScriptRoot\..\version"
+    [Version]$currentVersion = Get-Content -Path "$PSScriptRoot\..\Version"
     if ($remoteVersion -gt $currentVersion) {
         Write-Host "A new version $remoteVersion of DX CLI is available"
         $userInput = Read-Host "Do you want to update it now? (Y/N)"
