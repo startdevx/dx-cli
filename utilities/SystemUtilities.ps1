@@ -10,10 +10,11 @@ function New-SystemMessage {
 }
 
 function New-SystemAboutMessage {
+    $version = Get-Content -Path "$PSScriptRoot\..\version"
     $aboutMessage = @"
 About DX CLI
 
-CLI version : 0.0.1
+CLI version : $version
 Last update : 2025-12-04
 GitHub      : https://github.com/startdevx
 License     : MIT Open Source License
