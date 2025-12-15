@@ -39,23 +39,26 @@ function Start-AssistantJob {
     param(
         [string]$PromptInput = ""
     )
+
+    $PromptSystem = ""
     
     $script:isAssistantJobRunning = $true
     $script:assistantJob = Start-Job -ScriptBlock {
         param(
-            [string]$PromptInput
+            [string]$PromptInput,
+            [string]$PromptSystem
         )
 
-        $assistantDirectory = "$HOME\.dx\assistant"
+        $assistantDirectory = "$HOME\.dx\ai"
 
         if (Test-Path "$assistantDirectory\ai.ps1") {
             Set-Location $assistantDirectory
-            $result = .\ai.ps1 -PromptInput $PromptInput
+            $result = .\ai.ps1 -PromptInput $PromptInput -PromptSystem $PromptSystem
             if ($result) {
                 return $result
             }
         }
 
-        return "Your AI assistant has not been implemented yet by your organization."
-    } -ArgumentList $PromptInput
+        return "Your AI assistant has not been integrated yet by your organization.`nMore info at https://github.com/startdevx/dx-cli/blob/main/docs/integrate-your-ai.md"
+    } -ArgumentList $PromptInput $PromptSystem
 }
