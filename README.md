@@ -8,7 +8,7 @@
 
 ## What is DX CLI?
 
-DX CLI removes the friction of internal tools and documentation so your engineers can focus on building, not hunting. Discover tools instantly, integrate your own corporate AI solutions, and create custom workflows that make every engineer more efficient. The result? Faster onboarding, smoother collaboration, and a developer experience that actually works.
+DX CLI removes the friction of internal tools and documentation discovery so your engineers can focus on building, not hunting. Discover tools instantly, integrate your own corporate AI solutions, and create custom workflows that make every engineer more efficient. The result? Faster onboarding, smoother collaboration, and a developer experience that actually works.
 
 > [!NOTE]
 > **DX CLI requires PowerShell 7.x** to be able to run. **On Windows, DX CLI can run without PowerShell 7.x installed and works with the built-in Windows PowerShell 5.1**. However, relying on the older version limits your ability to customize the user interface of DX CLI, but it does not prevent you from using the main features.
