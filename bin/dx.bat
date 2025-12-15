@@ -3,7 +3,7 @@ setlocal
 
 set "current_location=%~dp0"
 
-:: Check for PowerShell Core (pwsh)
+:: Check for PowerShell (pwsh)
 where pwsh.exe >nul 2>&1
 if %ERRORLEVEL%==0 (
     pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1"
