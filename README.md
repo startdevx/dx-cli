@@ -6,7 +6,7 @@
 
 ![DX CLI Screenshot](./img/dx-cli.png)
 
-## What is DX CLI?
+## ⁉️ What is DX CLI?
 
 DX CLI removes your organization's frictions of internal tools and documentation discovery so your engineers can focus on building, not hunting. 
 
@@ -31,7 +31,7 @@ Whether you use Windows PowerShell 5.1 or PowerShell 7.x, it must run in `FullLa
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-## Clone DX CLI
+## 📖 Clone DX CLI
 
 Clone DX CLI repository from GitHub to your local machine:
 
@@ -39,7 +39,7 @@ Clone DX CLI repository from GitHub to your local machine:
 git clone https://github.com/startdevx/dx-cli
 ```
 
-## Add `/bin` to Your `PATH`
+## 🧭 Add `/bin` to your `PATH`
 
 To use DX CLI from your terminal, add DX CLI `/bin` directory to your `PATH` environment variable.
 

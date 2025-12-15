@@ -2,7 +2,7 @@
 
 You can integrate your internal AI with DX CLI by providing a PowerShell script that DX CLI automatically executes.
 
-## Overview
+## 🔍 Overview
 
 DX CLI looks for a PowerShell script named `ai.ps1` in the following location:
 
@@ -12,7 +12,7 @@ $HOME/.dx/ai/ai.ps1
 
 This script acts as the interface between DX CLI and your AI provider.
 
-## Create the `ai.ps1` File
+## 🆕 Create the `ai.ps1` file
 
 1. Create the required directory structure `$HOME/.dx/ai`
 2. Inside this directory, create a file named `ai.ps1`
@@ -25,22 +25,26 @@ param (
 )
 ```
 
-## Interface of `ai.ps1` script
+## 📜 Interface of `ai.ps1` script
 
 ### Script inputs
 
 The `ai.ps1` script receives two parameters:
 * `PromptInput`: the prompt created by the user
-* `PromptSystem`: a system prompt provided by DX CLI to give context or instructions to the AI.
+* `PromptSystem`: a system prompt provided by DX CLI to give context or instructions to the AI
 
 > [!NOTE]
 > You may choose to use, modify, or ignore the system prompt depending on your implementation.
 
+### Script logic
+
+You can use PowerShell language to write your script or you can use any other type of scripting language and call them using its command such as `python`.
+
 ### Script output
 
-The script must return a **string**. This returned string is displayed directly in the DX CLI user interface.
+You can write your script directly in PowerShell, or use any other scripting language and invoke it through its command-line interface (for example, `python`).
 
-## Example: OpenAI API Integration
+## ✍️ Example: OpenAI API integration
 
 Below is an example implementation using the OpenAI Responses API.
 
