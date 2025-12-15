@@ -42,7 +42,7 @@ You can use PowerShell language to write your script or you can use any other ty
 
 ### Script output
 
-You can write your script directly in PowerShell, or use any other scripting language and invoke it through its command-line interface (for example, `python`).
+The script must return a **string**. This returned string is displayed directly in the DX CLI user interface.
 
 ## ✍️ Example: OpenAI API integration
 
