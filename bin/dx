@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Get the directory of this script
+current_location="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Function to run the PowerShell script
+run_powershell() {
+    "$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../StartChat.ps1"
+}
+
+# Check for pwsh first (PowerShell Core / 7+)
+if command -v pwsh >/dev/null 2>&1; then
+    run_powershell pwsh
+    exit $?
+fi
+
+echo "PowerShell is not installed. Install PowerShell before using DX CLI."
+
+OS_TYPE="$(uname -s 2>/dev/null || echo Windows_NT)"
+
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+    echo "See https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-macos"
+    exit 1
+fi
+
+if [[ "$OS_TYPE" == "Linux" ]]; then
+    echo "See https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-linux"
+    exit 1
+fi
+
+echo "See https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell"
+exit 1
