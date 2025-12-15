@@ -16,30 +16,33 @@ function Invoke-Git {
 }
 
 function Test-UpdateAvailable {
-    Get-Command git -ErrorAction Stop
-    Invoke-Git -GitArguments @("-C", $PSScriptRoot, "fetch", "origin", "--prune") | Out-Null
-    [Version]$remoteVersion = Invoke-Git -GitArguments @("-C", $PSScriptRoot, "show", "origin/main:version")
-    [Version]$currentVersion = Get-Content -Path "version"
-    if ($remoteVersion -gt $currentVersion) {
-        Write-Host "A new version $remoteVersion of DX CLI is available"
-        $userInput = Read-Host "Do you want to update it now? (Y/n)"
-        switch -Regex ($userInput.Trim().ToLower()) {
-            '^(yes|y)$' {
-                Invoke-Git -GitArguments @("-C", $PSScriptRoot, "pull")
-                break
-            }
-            default {
-                break
+    try {
+        Get-Command git -ErrorAction Stop | Out-Null
+        Invoke-Git -GitArguments @("-C", $PSScriptRoot, "fetch", "origin", "--prune") | Out-Null
+        [Version]$remoteVersion = Invoke-Git -GitArguments @("-C", $PSScriptRoot, "show", "origin/main:version")
+        [Version]$currentVersion = Get-Content -Path "$PSScriptRoot\version"
+        if ($remoteVersion -gt $currentVersion) {
+            Write-Host "A new version $remoteVersion of DX CLI is available"
+            $userInput = Read-Host "Do you want to update it now? (Y/N)"
+            switch -Regex ($userInput.Trim().ToLower()) {
+                '^(yes|y)$' {
+                    Invoke-Git -GitArguments @("-C", $PSScriptRoot, "pull")
+                    break
+                }
+                default {
+                    break
+                }
             }
         }
     }
+    catch {
+    }
 }
-
-Test-UpdateAvailable
 
 $script:previousWindowSizeWidth = $Host.UI.RawUI.WindowSize.Width
 $script:previousPromptInput = ""
 
+Test-UpdateAvailable
 Reset-Host
 Write-Banner
 Show-PromptCard -PromptInput $script:previousPromptInput
