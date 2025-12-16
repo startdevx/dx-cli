@@ -18,13 +18,12 @@ try {
         switch -Regex ($userInput.Trim().ToLower()) {
             '^(yes|y)$' {
                 Invoke-Git -GitArguments @("-C", $resolvedPath, "pull")
-                break
-            }
-            default {
-                break
+                exit 0
             }
         }
     }
 }
 catch {
 }
+
+exit 1

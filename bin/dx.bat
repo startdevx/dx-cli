@@ -7,7 +7,7 @@ set "current_location=%~dp0"
 where pwsh.exe >nul 2>&1
 if %ERRORLEVEL%==0 (
     pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\utilities\UpdateChecker.ps1"
-    pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1"
+    pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1" -UpdateExitCode %ERRORLEVEL%
     exit /b %ERRORLEVEL%
 )
 
@@ -15,7 +15,7 @@ if %ERRORLEVEL%==0 (
 where powershell.exe >nul 2>&1
 if %ERRORLEVEL%==0 (
     powershell -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\utilities\UpdateChecker.ps1"
-    powershell -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1"
+    powershell -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1" -UpdateExitCode %ERRORLEVEL%
     exit /b %ERRORLEVEL%
 )
 
