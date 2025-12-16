@@ -1,5 +1,5 @@
 param (
-    [int]$UpdateExitCode
+    [string]$HasCliBeenUpdated = "false"
 )
 
 ."$PSScriptRoot\components\Banner.ps1"
@@ -16,7 +16,7 @@ $script:previousPromptInput = ""
 
 Reset-Host
 Write-Banner
-if ($UpdateExitCode -eq 0) {
+if ($HasCliBeenUpdated -eq "true") {
     Write-Host "Updated DX CLI Release Notes"
     #Write-ReleaseNotes
 }

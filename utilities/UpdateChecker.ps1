@@ -18,7 +18,7 @@ try {
         switch -Regex ($userInput.Trim().ToLower()) {
             '^(yes|y)$' {
                 Invoke-Git -GitArguments @("-C", $resolvedPath, "pull")
-                exit 0
+                return "true"
             }
         }
     }
@@ -26,4 +26,4 @@ try {
 catch {
 }
 
-exit 1
+return "false"
