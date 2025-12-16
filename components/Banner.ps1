@@ -31,9 +31,11 @@ function Write-Banner {
 2. Be specific for the best results.
 3. /help for more information.
 "@
+    $version = Get-Content -Path "$PSScriptRoot\..\Version"
     $bannerInfoText = @"
 $powershellVersion
-Running in $currentDirectory
+DX CLI version $version
+Started in $currentDirectory
 "@
 
     $bannerAsciiArtWidth = ($bannerAsciiArt -split "`n" | ForEach-Object { $_.Length } | Measure-Object -Maximum).Maximum
