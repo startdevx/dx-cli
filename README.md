@@ -6,7 +6,7 @@
 
 ![DX CLI Screenshot](./img/dx-cli.png)
 
-## ⁉️ What is DX CLI?
+## 🔍 What is DX CLI?
 
 DX CLI removes your organization's frictions of internal tools and documentation discovery so your engineers can focus on building, not hunting. 
 
@@ -54,10 +54,6 @@ $currentPath = $regKey.GetValue("PATH", "", "DoNotExpandEnvironmentNames")
 $regKey.SetValue("PATH", "$dxCliBinPath;$currentPath", "ExpandString")
 ```
 
-Then open a new terminal session.
-
-**Congratulations! You can now use `dx` in your terminal.**
-
 ### On macOS/Linux
 
 Edit your `.zshrc` or `.bashrc` file and append the following lines at the end:
@@ -67,9 +63,13 @@ chmod +x [PUT_YOUR_DX_CLI_BIN_FOLDER_PATH_HERE]/dx
 export PATH="[PUT_YOUR_DX_CLI_BIN_FOLDER_PATH_HERE]:$PATH"
 ```
 
-After saving the file, open a new terminal session.
+## 🚀 Get started with `dx` in your terminal
 
-**Congratulations! You can now use `dx` in your terminal.**
+Open a new terminal session to refresh your `PATH` environment variable, then run the following command:
+
+```shell
+dx
+```
 
 ## 🪙 Credits
 
