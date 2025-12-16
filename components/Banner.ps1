@@ -1,19 +1,9 @@
 ."$PSScriptRoot\Card.ps1"
-
-function Get-PowerShellVersion {
-    $majorVersion = $PSVersionTable.PSVersion.Major
-    $minorVersion = $PSVersionTable.PSVersion.Minor
-    if ($majorVersion -gt 5) {
-        return "Using PowerShell $majorVersion.$minorVersion"
-    }
-    else {
-        return "Using Windows PowerShell $majorVersion.$minorVersion"
-    }
-}
+."$PSScriptRoot\..\utilities\SystemUtilities.ps1"
 
 function Write-Banner {
     # https://patorjk.com/software/taag/#p=display&f=Big+Money-ne&t=dx+AI&x=none&v=4&h=4&w=80&we=false
-    $bannerTitle = "dx AI"
+    $bannerTitle = "dx cli"
     $bannerAsciiArt = @"
        /00                           /00 /00
       | 00                          | 00|__/
@@ -24,17 +14,17 @@ function Write-Banner {
 |  0000000 /00/\  00      |  0000000| 00| 00
  \_______/|__/  \__/       \_______/|__/|__/
 "@
-    $powershellVersion = Get-PowerShellVersion
-    $currentDirectory = (Get-Location).Path
     $bannerTipsText = @"
 1. Ask questions.
 2. Be specific for the best results.
 3. /help for more information.
 "@
-    $version = Get-Content -Path "$PSScriptRoot\..\Version"
+    $powershellVersion = Get-PowerShellVersion
+    $version = Get-CliVersion
+    $currentDirectory = (Get-Location).Path
     $bannerInfoText = @"
-$powershellVersion
-DX CLI version $version
+Using $powershellVersion
+DX CLI $version
 Started in $currentDirectory
 "@
 
