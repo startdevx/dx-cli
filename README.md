@@ -59,7 +59,6 @@ $regKey.SetValue("PATH", "$dxCliBinPath;$currentPath", "ExpandString")
 Edit your `.zshrc` or `.bashrc` file and append the following lines at the end:
 
 ```shell
-chmod +x [PUT_YOUR_DX_CLI_BIN_FOLDER_PATH_HERE]/dx
 export PATH="[PUT_YOUR_DX_CLI_BIN_FOLDER_PATH_HERE]:$PATH"
 ```
 
