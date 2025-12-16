@@ -115,7 +115,7 @@ while ($true) {
                     Write-Banner
                 }
                 'docs' {
-                    $url = "https://github.com/startdevx"
+                    $url = "https://github.com/startdevx/dx-cli/tree/main/docs"
 
                     $systemDocsMessage = New-SystemDocsMessage -Url $url
                     Add-MessageToHistory -Message $systemDocsMessage

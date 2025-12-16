@@ -15,7 +15,7 @@ function New-SystemAboutMessage {
 About DX CLI
 
 CLI version : $version
-GitHub      : https://github.com/startdevx
+GitHub      : https://github.com/startdevx/dx-cli
 License     : MIT Open Source License
 "@
 
