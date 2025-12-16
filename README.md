@@ -73,4 +73,4 @@ dx
 
 ## 🪙 Credits
 
-DX CLI is an open-source solution available on [GitHub](https://github.com/startdevx/dx-cli), crafted by [Start DevX](https://github.com/startdevx) organization.
+DX CLI is an open-source solution available on [GitHub](https://github.com/startdevx/dx-cli), crafted and maintained by [Kevin Beaulieu](https://github.com/beaulieukevin).
