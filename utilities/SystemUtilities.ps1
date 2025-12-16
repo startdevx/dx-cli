@@ -1,3 +1,18 @@
+function Get-PowerShellVersion {
+    $majorVersion = $PSVersionTable.PSVersion.Major
+    $minorVersion = $PSVersionTable.PSVersion.Minor
+    if ($majorVersion -gt 5) {
+        return "PowerShell $majorVersion.$minorVersion"
+    }
+    else {
+        return "Windows PowerShell $majorVersion.$minorVersion"
+    }
+}
+
+function Get-CliVersion {
+    return Get-Content -Path "$PSScriptRoot\..\Version"
+}
+
 function New-SystemMessage {
     param(
         [string]$Message = ""
@@ -10,13 +25,13 @@ function New-SystemMessage {
 }
 
 function New-SystemAboutMessage {
-    $version = Get-Content -Path "$PSScriptRoot\..\Version"
+    $version = Get-CliVersion
     $aboutMessage = @"
 About DX CLI
 
-CLI version : $version
-GitHub      : https://github.com/startdevx/dx-cli
-License     : MIT Open Source License
+Version : $version
+GitHub  : https://github.com/startdevx/dx-cli
+License : MIT Open Source License
 "@
 
     return New-SystemMessage -Message $aboutMessage
