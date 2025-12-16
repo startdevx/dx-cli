@@ -1,3 +1,7 @@
+param (
+    [string]$HasCliBeenUpdated = "false"
+)
+
 ."$PSScriptRoot\components\Banner.ps1"
 ."$PSScriptRoot\components\LoaderCard.ps1"
 ."$PSScriptRoot\components\MessageCard.ps1"
@@ -12,6 +16,10 @@ $script:previousPromptInput = ""
 
 Reset-Host
 Write-Banner
+if ($HasCliBeenUpdated -eq "true") {
+    Write-Host "Updated DX CLI Release Notes"
+    #Write-ReleaseNotes
+}
 Show-PromptCard -PromptInput $script:previousPromptInput
 
 while ($true) {
