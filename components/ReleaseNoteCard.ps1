@@ -26,12 +26,11 @@ function Write-ReleaseNoteCard {
     $releaseNotes = ""
 
     for ($i = 0; $i -lt $releases.Count; $i++) {
-        Write-Host $i
         $releaseNotes += $releases[$i].Content
         if ($i -ne ($releases.Count - 1)) {
             $releaseNotes += "`n"
         }
     }
 
-    Write-Card -Title "Release Notes ($currentVersion)" -BorderColor DarkGreen -Text $releaseNotes
+    Write-Card -Title "Release Notes ($currentVersion)" -BorderColor DarkBlue -Text $releaseNotes
 }
