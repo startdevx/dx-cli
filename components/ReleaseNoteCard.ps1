@@ -32,5 +32,5 @@ function Write-ReleaseNoteCard {
         }
     }
 
-    Write-Card -Title "Release Notes ($currentVersion)" -BorderColor Blue -Text $releaseNotes
+    Write-Card -Title "Release Notes ($currentVersion)" -BorderColor DarkBlue -Text $releaseNotes
 }
