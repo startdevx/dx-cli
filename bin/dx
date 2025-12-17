@@ -17,8 +17,8 @@ run_powershell() {
         if [[ $(printf '%s\n%s\n' "$remote_version" "$previous_cli_version" | sort -V | tail -n1) == "$remote_version" ]] \
         && [[ "$remote_version" != "$previous_cli_version" ]]; then
             read -r -p "A new version of DX CLI ($remote_version) is available.
-            You can update now or continue using the current version.
-            Update now? [Y/N] (default: N)" user_input
+You can update now or continue using the current version.
+Update now? [Y/N] (default: N): " user_input
 
             user_input=$(echo "$user_input" | tr '[:upper:]' '[:lower:]')
 
