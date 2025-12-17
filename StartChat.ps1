@@ -6,7 +6,6 @@ param (
 ."$PSScriptRoot\components\LoaderCard.ps1"
 ."$PSScriptRoot\components\MessageCard.ps1"
 ."$PSScriptRoot\components\PromptCard.ps1"
-."$PSScriptRoot\components\ReleaseNoteCard.ps1"
 ."$PSScriptRoot\utilities\AssistantUtilities.ps1"
 ."$PSScriptRoot\utilities\HostUtilities.ps1"
 ."$PSScriptRoot\utilities\SystemUtilities.ps1"
@@ -16,9 +15,7 @@ $script:previousWindowSizeWidth = $Host.UI.RawUI.WindowSize.Width
 $script:previousPromptInput = ""
 
 Reset-Host
-Write-Banner
-Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
-Write-Host
+Write-Banner -FromVersion $PreviousCliVersion
 Show-PromptCard -PromptInput $script:previousPromptInput
 
 while ($true) {
@@ -28,9 +25,7 @@ while ($true) {
     
     if ($currentWindowSizeWidth -ne $script:previousWindowSizeWidth) {
         Reset-Host
-        Write-Banner
-        Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
-        Write-Host
+        Write-Banner -FromVersion $PreviousCliVersion
         $messages = @(Get-MessagesFromHistory)
         Write-MessageCards -Messages $messages
 
@@ -121,9 +116,7 @@ while ($true) {
                 'clear' {
                     Reset-MessageHistory
                     Reset-Host
-                    Write-Banner
-                    Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
-                    Write-Host
+                    Write-Banner -FromVersion $PreviousCliVersion
                 }
                 'docs' {
                     $url = "https://github.com/startdevx/dx-cli/tree/main/docs"
