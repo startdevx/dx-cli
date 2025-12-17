@@ -10,8 +10,9 @@ run_powershell() {
     previous_cli_version=$(<"$version_file")
 
     if ! command -v git >/dev/null 2>&1; then
+        echo "Git is not installed or not in PATH."
     else
-        git -C "$script_dir" fetch origin --prune >/dev/null
+        git -C "$script_dir" fetch origin --prune --quiet
         remote_version=$(git -C "$script_dir" show origin/main:Version)
         if [[ $(printf '%s\n%s\n' "$remote_version" "$previous_cli_version" | sort -V | tail -n1) == "$remote_version" ]] \
         && [[ "$remote_version" != "$previous_cli_version" ]]; then
@@ -19,7 +20,7 @@ run_powershell() {
             You can update now or continue using the current version.
             Update now? [Y/N] (default: N)" user_input
 
-            user_input="${user_input,,}"
+            user_input=$(echo "$user_input" | tr '[:upper:]' '[:lower:]')
 
             if [[ "$user_input" =~ ^(yes|y)$ ]]; then
                 git -C "$script_dir" pull
