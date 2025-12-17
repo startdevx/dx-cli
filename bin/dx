@@ -4,8 +4,8 @@ current_location="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Function to run PowerShell script
 run_powershell() {
-    has_cli_been_updated=$("$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../utilities/UpdateChecker.ps1")
-    "$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../StartChat.ps1" -HasCliBeenUpdated "$has_cli_been_updated"
+    previous_cli_version=$("$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../utilities/UpdateChecker.ps1" | tee /dev/tty)
+    "$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../StartChat.ps1" -PreviousCliVersion "$previous_cli_version"
 }
 
 # Check for PowerShell (pwsh)
