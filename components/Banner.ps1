@@ -37,9 +37,8 @@ Started in $currentDirectory
         $chars = $bannerAsciiArt.ToCharArray()
         for ($i = 0; $i -lt $chars.Length; $i++) {
             $char = $chars[$i]
-            $isLastChar = $i -eq ($chars.Length - 1)
-
-            if (!$isLastChar) {
+            
+            if ($i -ne ($chars.Length - 1)) {
                 switch ($char) {
                     "0" { Write-Host ([char]0x2588).ToString() -ForegroundColor Cyan -NoNewline }
                     default { Write-Host $char -ForegroundColor Cyan -NoNewline }
