@@ -14,8 +14,7 @@ try {
     Invoke-Git -GitArguments @("-C", $resolvedPath, "fetch", "origin", "--prune") | Out-Null
     [Version]$remoteVersion = Invoke-Git -GitArguments @("-C", $resolvedPath, "show", "origin/main:Version")
     if ($remoteVersion -gt $previousCliVersion) {
-        Write-Host "A new version $remoteVersion of DX CLI is available"
-        $userInput = Read-Host "Do you want to update it now? (Y/N)"
+        $userInput = Read-Host "A new version of DX CLI ($remoteVersion) is available.`nYou can update now or continue using the current version.`nUpdate now? [Y/N] (default: N)"
         switch -Regex ($userInput.Trim().ToLower()) {
             '^(yes|y)$' {
                 Invoke-Git -GitArguments @("-C", $resolvedPath, "pull")

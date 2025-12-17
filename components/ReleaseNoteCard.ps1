@@ -25,9 +25,13 @@ function Write-ReleaseNoteCard {
 
     $releaseNotes = ""
 
-    foreach ($release in $releases) {
+    for ($i = 0; $i -lt $releases.Count; $i++) {
         if ($release.Version -gt $oldVersion -and $release.Version -le $currentVersion) {
-            $releaseNotes += $release.Content + "`n"
+            $releaseNotes += $release.Content
+
+            if ($i -ne ($releases.Count - 1)) {
+                $releaseNotes += "`n"
+            }
         }
     }
 
