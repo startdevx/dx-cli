@@ -1,11 +1,12 @@
 param (
-    [string]$HasCliBeenUpdated = "false"
+    [string]$PreviousCliVersion = "0.0.1"
 )
 
 ."$PSScriptRoot\components\Banner.ps1"
 ."$PSScriptRoot\components\LoaderCard.ps1"
 ."$PSScriptRoot\components\MessageCard.ps1"
 ."$PSScriptRoot\components\PromptCard.ps1"
+."$PSScriptRoot\components\ReleaseNoteCard.ps1"
 ."$PSScriptRoot\utilities\AssistantUtilities.ps1"
 ."$PSScriptRoot\utilities\HostUtilities.ps1"
 ."$PSScriptRoot\utilities\SystemUtilities.ps1"
@@ -16,10 +17,7 @@ $script:previousPromptInput = ""
 
 Reset-Host
 Write-Banner
-if ($HasCliBeenUpdated -eq "true") {
-    Write-Host "Updated DX CLI Release Notes"
-    #Write-ReleaseNotes
-}
+Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
 Show-PromptCard -PromptInput $script:previousPromptInput
 
 while ($true) {
@@ -30,6 +28,7 @@ while ($true) {
     if ($currentWindowSizeWidth -ne $script:previousWindowSizeWidth) {
         Reset-Host
         Write-Banner
+        Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
         $messages = @(Get-MessagesFromHistory)
         Write-MessageCards -Messages $messages
 
@@ -121,6 +120,7 @@ while ($true) {
                     Reset-MessageHistory
                     Reset-Host
                     Write-Banner
+                    Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
                 }
                 'docs' {
                     $url = "https://github.com/startdevx/dx-cli/tree/main/docs"

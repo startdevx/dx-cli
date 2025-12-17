@@ -8,10 +8,10 @@ set "current_location=%~dp0"
 where pwsh.exe >nul 2>&1
 if %ERRORLEVEL%==0 (
     for /F "usebackq delims=" %%A in (`pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\utilities\UpdateChecker.ps1"`) do (
-        set "has_cli_been_updated=%%A"
+        set "previous_cli_version=%%A"
     )
 
-    pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1" -HasCliBeenUpdated !has_cli_been_updated!
+    pwsh -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1" -PreviousCliVersion !previous_cli_version!
     endlocal
     exit /b %ERRORLEVEL%
 )
@@ -20,10 +20,10 @@ if %ERRORLEVEL%==0 (
 where powershell.exe >nul 2>&1
 if %ERRORLEVEL%==0 (
     for /F "usebackq delims=" %%A in (`powershell -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\utilities\UpdateChecker.ps1"`) do (
-        set "has_cli_been_updated=%%A"
+        set "previous_cli_version=%%A"
     )
 
-    powershell -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1" -HasCliBeenUpdated !has_cli_been_updated!
+    powershell -NoProfile -ExecutionPolicy Bypass -File "%current_location%..\StartChat.ps1" -PreviousCliVersion !previous_cli_version!
     endlocal
     exit /b %ERRORLEVEL%
 )
