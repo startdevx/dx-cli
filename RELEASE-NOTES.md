@@ -1,5 +1,9 @@
 # Release Notes
 
+## 0.0.4
+
+* Update UI banner
+
 ## 0.0.3
 
 * Initial version of DX CLI 0.0.3
