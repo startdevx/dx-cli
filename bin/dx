@@ -4,7 +4,29 @@ current_location="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Function to run PowerShell script
 run_powershell() {
-    previous_cli_version=$("$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../utilities/UpdateChecker.ps1" | tee /dev/tty)
+    script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+    version_file="$script_dir/Version"
+
+    previous_cli_version=$(<"$version_file")
+
+    if ! command -v git >/dev/null 2>&1; then
+    else
+        git -C "$script_dir" fetch origin --prune >/dev/null
+        remote_version=$(git -C "$script_dir" show origin/main:Version)
+        if [[ $(printf '%s\n%s\n' "$remote_version" "$previous_cli_version" | sort -V | tail -n1) == "$remote_version" ]] \
+        && [[ "$remote_version" != "$previous_cli_version" ]]; then
+            read -r -p "A new version of DX CLI ($remote_version) is available.
+            You can update now or continue using the current version.
+            Update now? [Y/N] (default: N)" user_input
+
+            user_input="${user_input,,}"
+
+            if [[ "$user_input" =~ ^(yes|y)$ ]]; then
+                git -C "$script_dir" pull
+            fi
+        fi
+    fi
+    
     "$1" -NoProfile -ExecutionPolicy Bypass -File "$current_location/../StartChat.ps1" -PreviousCliVersion "$previous_cli_version"
 }
 
