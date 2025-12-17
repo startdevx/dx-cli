@@ -21,19 +21,17 @@ function Write-ReleaseNoteCard {
             Version = [Version]$($_.Groups['version'].Value.Trim())
             Content = $_.Groups['body'].Value.Trim()
         }
-    }
+    } | Where-Object { $_.Version -gt $oldVersion -and $_.Version -le $currentVersion }
 
     $releaseNotes = ""
 
     for ($i = 0; $i -lt $releases.Count; $i++) {
-        if ($releases[$i].Version -gt $oldVersion -and $releases[$i].Version -le $currentVersion) {
-            $releaseNotes += $releases[$i].Content
-
-            if ($i -ne ($releases.Count - 1)) {
-                $releaseNotes += "`n"
-            }
+        Write-Host $i
+        $releaseNotes += $releases[$i].Content
+        if ($i -ne ($releases.Count - 1)) {
+            $releaseNotes += "`n"
         }
     }
 
-    Write-Card -Title "Release Notes" -BorderColor DarkGreen -Text $releaseNotes
+    Write-Card -Title "Release Notes ($currentVersion)" -BorderColor DarkGreen -Text $releaseNotes
 }
