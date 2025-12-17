@@ -149,7 +149,7 @@ while ($true) {
         }
         else {
             Show-LoaderCard
-            Start-AssistantJob -PromptInput $currentPromptInput
+            Start-AssistantJob -PromptInput $currentPromptInput -MessageHistory @(Get-MessagesFromHistory)
             $currentPromptInput = ""
         }
     }

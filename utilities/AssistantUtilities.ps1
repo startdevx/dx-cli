@@ -37,28 +37,30 @@ function Get-AssistantMessage {
 
 function Start-AssistantJob {
     param(
-        [string]$PromptInput = ""
+        [string]$PromptInput = "",
+        [array]$MessageHistory = @()
     )
 
-    $PromptSystem = ""
+    $PromptSystem = Get-Content "$PSScriptRoot\..\prompts\system.md" -Raw
     
     $script:isAssistantJobRunning = $true
     $script:assistantJob = Start-Job -ScriptBlock {
         param(
             [string]$PromptInput,
-            [string]$PromptSystem
+            [string]$PromptSystem,
+            [string]$MessageHistory
         )
 
         $assistantDirectory = "$HOME\.dx\ai"
 
         if (Test-Path "$assistantDirectory\ai.ps1") {
             Set-Location $assistantDirectory
-            $result = .\ai.ps1 -PromptInput $PromptInput -PromptSystem $PromptSystem
+            $result = .\ai.ps1 -PromptInput $PromptInput -PromptSystem $PromptSystem -MessageHistory $MessageHistory
             if ($result) {
                 return $result
             }
         }
 
         return "Your AI assistant has not been integrated yet by your organization.`nMore info at https://github.com/startdevx/dx-cli/blob/main/docs/integrate-your-ai.md"
-    } -ArgumentList $PromptInput, $PromptSystem
+    } -ArgumentList $PromptInput, $PromptSystem, $MessageHistory
 }
