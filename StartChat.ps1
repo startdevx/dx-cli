@@ -18,6 +18,7 @@ $script:previousPromptInput = ""
 Reset-Host
 Write-Banner
 Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
+Write-Host
 Show-PromptCard -PromptInput $script:previousPromptInput
 
 while ($true) {
@@ -29,6 +30,7 @@ while ($true) {
         Reset-Host
         Write-Banner
         Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
+        Write-Host
         $messages = @(Get-MessagesFromHistory)
         Write-MessageCards -Messages $messages
 
@@ -121,6 +123,7 @@ while ($true) {
                     Reset-Host
                     Write-Banner
                     Write-ReleaseNoteCard -FromVersion $PreviousCliVersion
+                    Write-Host
                 }
                 'docs' {
                     $url = "https://github.com/startdevx/dx-cli/tree/main/docs"

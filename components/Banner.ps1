@@ -56,5 +56,4 @@ Started in $currentDirectory
     Write-Host
     Write-Card -Title "Info" -TextColor DarkGray -BorderColor DarkGray -Text $bannerInfoText
     Write-Card -Title "Tips" -BorderColor DarkYellow -Text $bannerTipsText
-    Write-Host
 }
