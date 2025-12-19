@@ -62,7 +62,7 @@ Edit your `.zshrc` or `.bashrc` file and append the following lines at the end:
 export PATH="[PUT_YOUR_DX_CLI_BIN_FOLDER_PATH_HERE]:$PATH"
 ```
 
-## 🚀 Get started with `dx` in your terminal
+## 🚀 Start using `dx`
 
 Open a new terminal session to refresh your `PATH` environment variable, then run the following command:
 
