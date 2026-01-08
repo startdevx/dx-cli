@@ -72,12 +72,12 @@ Started in $currentDirectory
     $content = Get-Content "$PSScriptRoot\..\RELEASE-NOTES.md" -Raw
     $pattern = '(?ms)^##\s+(?<version>[^\r\n]+)\s*(?<body>.*?)(?=^##\s+|\z)'
 
-    $releases = [regex]::Matches($content, $pattern) | ForEach-Object {
-        [pscustomobject]@{
-            Version = [Version]$($_.Groups['version'].Value.Trim())
-            Content = $_.Groups['body'].Value.Trim()
-        }
-    } | Where-Object { $_.Version -gt $oldVersion -and $_.Version -le $currentVersion }
+    $releases = @([regex]::Matches($content, $pattern) | ForEach-Object {
+            [pscustomobject]@{
+                Version = [Version]$($_.Groups['version'].Value.Trim())
+                Content = $_.Groups['body'].Value.Trim()
+            }
+        } | Where-Object { $_.Version -gt $oldVersion -and $_.Version -le $currentVersion })
 
     $releaseNotes = ""
 
